@@ -67,10 +67,13 @@ const onInputChange = event => {
         }
     })
     .catch(error => {
+      countryInfoEl.innerHTML = ''
+      countryListEl.innerHTML = ''
       return Notiflix.Notify.failure("Oops, there is no country with that name");
       });
     
 }
+
 
 
 inputEl.addEventListener('input', debounce(onInputChange, 300))
