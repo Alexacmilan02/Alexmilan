@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  list-style: none;
+  padding: 0;
 }
 
 body {
@@ -10,6 +12,7 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
+  padding: 30px;
 }
 
 #search-box {
@@ -17,4 +20,60 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+}
+
+#search-box:focus-within {
+  outline: 1px solid blue;
+  transform: scale(1.1);
+}
+
+.country-item {
+  
+  display: flex;
+  align-items: center;
+  height: 20px;
+  margin-bottom: 15px;
+}
+
+.country-image {
+  height: 20px; 
+  margin-right: 10px;
+}
+.country-text {
+  font-size: 20px;
+}
+
+/* div */
+
+.country-info-box {
+
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.country-info-image {
+  height: 40px;
+  width: 60px;
+  margin-right: 10px;
+}
+
+.country-info-name {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.country-info-text {
+  
+}
+
+.main-text {
+  font-size: 25px;
+  font-weight: 700;
+  margin-right: 5px;
+
+}
+
+.country-info-text {
+  font-size: 22px;
 }
