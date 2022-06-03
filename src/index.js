@@ -12,7 +12,22 @@ const countryListEl = document.querySelector('.country-list')
 const countryInfoEl = document.querySelector('.country-info')
 
 
+
+function addItemElement(data) {
+  const newElements = data.map(el => ` <li class="country-item">
+      <img
+      class="country-image"
+      src="${el.flags.svg}"
+          />
+      <p class="country-text">${el.name.common}</p>
+      </li>`)
+
+  countryListEl.innerHTML = newElements.join('')
+}
+
 const onInputChange = event => {
+    countryInfoEl.innerHTML = ''
+    countryListEl.innerHTML = ''
   
     const searchCountry = event.target.value.trim();
 
@@ -20,25 +35,15 @@ const onInputChange = event => {
     .then(data => {
 
         if(searchCountry === '') {
-          countryInfoEl.innerHTML = ''
-          countryListEl.innerHTML = ''
+          return
         }
-        else if(data.length >= 2 && data.length <= 10) {
-          countryInfoEl.innerHTML = ''
 
-        const addItemElement = data
-            .map(el => ` <li class="country-item">
-                <img
-                class="country-image"
-                src="${el.flags.svg}"
-                    />
-                <p class="country-text">${el.name.common}</p>
-                </li>`)
+        else if(data.length >= 2 && data.length <= 10) {
+          
+          addItemElement(data)
         
-         countryListEl.innerHTML = addItemElement.join('')
         }
         else if (data.length === 1) {
-          countryListEl.innerHTML = ''
 
             const elem = data[0]
             
@@ -67,8 +72,6 @@ const onInputChange = event => {
         }
     })
     .catch(error => {
-      countryInfoEl.innerHTML = ''
-      countryListEl.innerHTML = ''
       return Notiflix.Notify.failure("Oops, there is no country with that name");
       });
     
